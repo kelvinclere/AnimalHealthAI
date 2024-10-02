@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 9.99
+  date: 2024-10-02
+  time: 2024-10-02 12:58:20
+  farmer: one
+
+two:
+  quantity: 9.99
+  date: 2024-10-02
+  time: 2024-10-02 12:58:20
+  farmer: two

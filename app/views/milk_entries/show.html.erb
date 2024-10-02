@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @milk_entry %>
+
+<div>
+  <%= link_to "Edit this milk entry", edit_milk_entry_path(@milk_entry) %> |
+  <%= link_to "Back to milk entries", milk_entries_path %>
+
+  <%= button_to "Destroy this milk entry", @milk_entry, method: :delete %>
+</div>

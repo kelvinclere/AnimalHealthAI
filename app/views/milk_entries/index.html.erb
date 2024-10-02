@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Milk entries" %>
+
+<h1>Milk entries</h1>
+
+<div id="milk_entries">
+  <% @milk_entries.each do |milk_entry| %>
+    <%= render milk_entry %>
+    <p>
+      <%= link_to "Show this milk entry", milk_entry %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New milk entry", new_milk_entry_path %>
