@@ -1,0 +1,21 @@
+<h1><%= @veterinary_doctor.name %></h1>
+
+<p>
+  <strong>About:</strong>
+  <%= @veterinary_doctor.about %>
+</p>
+
+<p>
+  <strong>Contact Details:</strong>
+  <%= @veterinary_doctor.contact_details %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @veterinary_doctor.location %>
+</p>
+
+<div>
+  <%= link_to 'Edit', edit_veterinary_doctor_path(@veterinary_doctor) %> |
+  <%= link_to 'Back to List', veterinary_doctors_path %>
+</div>

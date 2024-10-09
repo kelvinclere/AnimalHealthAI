@@ -1,10 +1,71 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @farmer %>
+<!-- Render Cow Details -->
+<%= render @cow %>
 
+<!-- Cow Actions -->
 <div>
-  <%= link_to "Edit this farmer", edit_farmer_path(@farmer) %> |
-  <%= link_to "Back to farmers", farmers_path %>
-
-  <%= button_to "Destroy this farmer", @farmer, method: :delete %>
+  <%= link_to "Edit this cow", edit_cow_path(@cow), class: 'button' %> |
+  <%= link_to "Back to cows", cows_path, class: 'button' %>
+  <%= button_to "Destroy this cow", @cow, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button danger' %>
 </div>
+
+<!-- Farmers Section -->
+<h1>Farmers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total Milk Quantity</th>
+      <th>Cows</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @farmers.each do |farmer| %>
+      <tr>
+        <td><%= farmer.name %></td>
+        <td><%= farmer.total_quantity %></td>
+        <td><%= farmer.cows.count %></td>
+        <td><%= link_to 'Show', farmer %></td>
+        <td><%= link_to 'Edit', edit_farmer_path(farmer) %></td>
+        <td><%= link_to 'Destroy', farmer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Farmer', new_farmer_path, class: 'button' %>
+
+<!-- Veterinary Doctors Section -->
+<h1>Veterinary Doctors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>About</th>
+      <th>Contact Details</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @veterinary_doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= doctor.about %></td>
+        <td><%= doctor.contact_details %></td>
+        <td><%= doctor.location %></td>
+        <td><%= link_to 'Show', doctor %></td>
+        <td><%= link_to 'Edit', edit_veterinary_doctor_path(doctor) %></td>
+        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Veterinary Doctor', new_veterinary_doctor_path, class: 'button' %>

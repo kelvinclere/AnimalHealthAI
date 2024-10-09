@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   resources :cows
   resources :milk_entries
   resources :farmers
+  resources :veterinary_doctors
 
-  # root 'farmers#index'
+
+  root 'farmers#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

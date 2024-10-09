@@ -1,7 +1,36 @@
-<div id="<%= dom_id farmer %>">
+<div id="<%= dom_id(farmer) %>">
+  <h2>Farmer Details</h2>
+
   <p>
-    <strong>Name:</strong>
-    <%= farmer.name %>
+    <strong>Name:</strong> <%= farmer.name %>
   </p>
 
+  <h3>Cows</h3>
+  <% if farmer.cows.any? %>
+    <ul>
+      <% farmer.cows.each do |cow| %>
+        <li>
+          <strong>Name:</strong> <%= cow.name %> | 
+          <strong>Age:</strong> <%= cow.age %> years
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No cows found for this farmer.</p>
+  <% end %>
+
+  <h3>Milk Entries</h3>
+  <% if farmer.milk_entries.any? %>
+    <ul>
+      <% farmer.milk_entries.each do |entry| %>
+        <li>
+          <strong>Quantity:</strong> <%= entry.quantity %> liters | 
+          <strong>Date:</strong> <%= entry.date.strftime('%B %d, %Y') %> | 
+          <strong>Time:</strong> <%= entry.time.strftime('%I:%M %p') %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No milk entries found for this farmer.</p>
+  <% end %>
 </div>

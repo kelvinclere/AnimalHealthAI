@@ -1,0 +1,9 @@
+<h1>Edit Veterinary Doctor</h1>
+
+<!-- Render the form partial and pass in the veterinary_doctor instance variable -->
+<%= render 'form', veterinary_doctor: @veterinary_doctor %>
+
+<!-- Link to go back to the list of veterinary doctors -->
+<div class="actions">
+  <%= link_to 'Back', veterinary_doctors_path, class: 'button' %>
+</div>

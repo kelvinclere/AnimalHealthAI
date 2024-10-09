@@ -1,0 +1,83 @@
+<h1>New Veterinary Doctor</h1>
+
+<%= form_with(model: @veterinary_doctor, local: true) do |form| %>
+  <% if @veterinary_doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@veterinary_doctor.errors.count, "error") %> prohibited this veterinary doctor from being saved:</h2>
+      <ul>
+        <% @veterinary_doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :about %>
+    <%= form.text_area :about %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_details %>
+    <%= form.text_field :contact_details %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', veterinary_doctors_path %>
+<%= form_with(model: veterinary_doctor, local: true) do |form| %>
+  <% if veterinary_doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(veterinary_doctor.errors.count, "error") %> prohibited this veterinary doctor from being saved:</h2>
+      <ul>
+        <% veterinary_doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :about %>
+    <%= form.text_area :about %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_details %>
+    <%= form.text_field :contact_details %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<h1>New Veterinary Doctor</h1>
+
+<%= render 'form', veterinary_doctor: @veterinary_doctor %>
+
+<%= link_to 'Back', veterinary_doctors_path %>
+

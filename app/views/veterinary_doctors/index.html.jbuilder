@@ -1,0 +1,1 @@
+json.array! @veterinary_doctors, partial: "veterinary_doctors/veterinary_doctors", as: :veterinary_doctors

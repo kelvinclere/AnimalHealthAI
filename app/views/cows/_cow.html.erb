@@ -1,4 +1,6 @@
 <div id="<%= dom_id cow %>">
+  <h2>Cow Details</h2>
+
   <p>
     <strong>Name:</strong>
     <%= cow.name %>
@@ -6,12 +8,31 @@
 
   <p>
     <strong>Age:</strong>
-    <%= cow.age %>
+    <%= cow.age %> years
   </p>
 
   <p>
     <strong>Farmer:</strong>
-    <%= cow.farmer_id %>
+    <%= cow.farmer.name %>
   </p>
 
+  <h3>Milk Entries for this Cow</h3>
+  <% if cow.milk_entries.any? %>
+    <ul>
+      <% cow.milk_entries.each do |entry| %>
+        <li>
+          <strong>Quantity:</strong> <%= entry.quantity %> liters |
+          <strong>Date:</strong> <%= entry.date.strftime('%B %d, %Y') %> |
+          <strong>Time:</strong> <%= entry.time.strftime('%I:%M %p') %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No milk entries found for this cow.</p>
+  <% end %>
+
+  <div class="actions">
+    <%= link_to 'Edit Cow', edit_cow_path(cow), class: 'button' %>
+    <%= link_to 'Delete Cow', cow, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button danger' %>
+  </div>
 </div>

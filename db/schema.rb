@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_02_101413) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_07_085359) do
   create_table "cows", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -34,6 +34,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_02_101413) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["farmer_id"], name: "index_milk_entries_on_farmer_id"
+  end
+
+  create_table "veterinary_doctors", force: :cascade do |t|
+    t.string "name"
+    t.string "about"
+    t.string "contact_details"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "cows", "farmers"

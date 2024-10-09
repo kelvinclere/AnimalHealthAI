@@ -1,0 +1,30 @@
+<h2>Veterinary Doctors</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>About</th>
+      <th>Contact Details</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @veterinary_doctors.each do |veterinary_doctor| %>
+      <tr>
+        <td><%= veterinary_doctor.name %></td>
+        <td><%= veterinary_doctor.about %></td>
+        <td><%= veterinary_doctor.contact_details %></td>
+        <td><%= veterinary_doctor.location %></td>
+        <td><%= link_to 'Show', veterinary_doctor %></td>
+        <td><%= link_to 'Edit', edit_veterinary_doctor_path(veterinary_doctor) %></td>
+        <td><%= link_to 'Destroy', veterinary_doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Link to create a new veterinary doctor -->
+<%= link_to 'New Veterinary Doctor', new_veterinary_doctor_path, class: 'button' %>

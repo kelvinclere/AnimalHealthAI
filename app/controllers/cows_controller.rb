@@ -1,13 +1,9 @@
 class CowsController < ApplicationController
-  before_action :set_cow, only: %i[ show edit update destroy ]
+  before_action :set_cow, only: %i[show edit update destroy]
 
-  # GET /cows or /cows.json
+  # GET /cows
   def index
     @cows = Cow.all
-  end
-
-  # GET /cows/1 or /cows/1.json
-  def show
   end
 
   # GET /cows/new
@@ -15,56 +11,45 @@ class CowsController < ApplicationController
     @cow = Cow.new
   end
 
-  # GET /cows/1/edit
+  # GET /cows/:id/edit
   def edit
   end
 
-  # POST /cows or /cows.json
+  # POST /cows
   def create
     @cow = Cow.new(cow_params)
 
-    respond_to do |format|
-      if @cow.save
-        format.html { redirect_to @cow, notice: "Cow was successfully created." }
-        format.json { render :show, status: :created, location: @cow }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cow.errors, status: :unprocessable_entity }
-      end
+    if @cow.save
+      redirect_to @cow, notice: 'Cow was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /cows/1 or /cows/1.json
+  # PATCH/PUT /cows/:id
   def update
-    respond_to do |format|
-      if @cow.update(cow_params)
-        format.html { redirect_to @cow, notice: "Cow was successfully updated." }
-        format.json { render :show, status: :ok, location: @cow }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cow.errors, status: :unprocessable_entity }
-      end
+    if @cow.update(cow_params)
+      redirect_to @cow, notice: 'Cow was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /cows/1 or /cows/1.json
+  # DELETE /cows/:id
   def destroy
-    @cow.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to cows_path, status: :see_other, notice: "Cow was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @cow.destroy
+    redirect_to cows_url, notice: 'Cow was successfully deleted.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cow
-      @cow = Cow.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def cow_params
-      params.require(:cow).permit(:name, :age, :farmer_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cow
+    @cow = Cow.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def cow_params
+    params.require(:cow).permit(:name, :age, :farmer_id)
+  end
 end
